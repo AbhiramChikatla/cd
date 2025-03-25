@@ -1,0 +1,5 @@
+first=10
+second=20
+
+third=first+second
+print("The third number is :",third)
