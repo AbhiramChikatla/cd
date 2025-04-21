@@ -47,5 +47,5 @@ def scanner(file_path):
     except Exception as e:
         print(f"An error occurred: {e}")
 
-file_path = 'sample.txt'  
+file_path = 'testing.txt'  
 scanner(file_path)
