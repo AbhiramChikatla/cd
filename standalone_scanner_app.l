@@ -41,7 +41,7 @@ void print_transition(char *text) {
     if (yytext[0] == '\n') {
         line_num++;
     }
-    // Skip whitespace (tabs, newlines, spaces).
+    // Skip whitespace (tabs, spaces).
 }
 
 . {

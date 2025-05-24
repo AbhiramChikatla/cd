@@ -92,6 +92,7 @@ def code_optimization(intermediate):
 # 6. Code Generation (Assembly)
 def code_generation(optimized_code):
     print("\n6. Code Generation (Assembly Output):")
+    ops={"+":"ADD","-":"SUB","*":"MUL","/":"DIV"}
     for line in optimized_code:
         dest, expr = line.split(" = ")
         parts = expr.split()
@@ -100,14 +101,7 @@ def code_generation(optimized_code):
         elif len(parts) == 3:
             op1, operator, op2 = parts
             print(f"  MOV R1, {op1}")
-            if operator == "+":
-                print(f"  ADD R1, {op2}")
-            elif operator == "-":
-                print(f"  SUB R1, {op2}")
-            elif operator == "*":
-                print(f"  MUL R1, {op2}")
-            elif operator == "/":
-                print(f"  DIV R1, {op2}")
+            print(f"  {ops[operator]} R1, {op2}")
             print(f"  MOV {dest}, R1")
 
 

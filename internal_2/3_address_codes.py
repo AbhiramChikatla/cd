@@ -63,8 +63,6 @@ class TACGenerator:
 
 # Example usage
 if __name__ == "__main__":
-    expression = "x = -5 + 3 * (6 - 2)"
-    expression2 = "a = b * (-c) + b * -c"
     exp =  "a=b*c+d"
     tac = TACGenerator(exp)
     quadruples = tac.parse()

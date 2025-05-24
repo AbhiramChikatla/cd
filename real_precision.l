@@ -29,7 +29,7 @@ int main() {
     } else {
         printf("\nNo numbers found.\n");
     }
-    
+
     return 0;
 }
 

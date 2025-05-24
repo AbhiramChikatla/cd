@@ -3,12 +3,12 @@ import re
 def constant_folding(lines):
     opt = []
     for line in lines:
-        parts=line.split(":=")
+        parts=line.split(" = ")
         if len(parts)==2:
             dst,expr=parts
             try:
                 res=eval(expr)
-                opt.append(f"{dst} := {res}")
+                opt.append(f"{dst} = {res}")
             except:
                 opt.append(line)
     return opt
@@ -17,15 +17,15 @@ def dead_code_elimination(lines):
     used_vars = set()
     # Collect all used variables on the right-hand side
     for line in lines:
-        rhs = line.split(":=")[-1]
+        rhs = line.split(" = ")[-1]
         tokens = re.findall(r'\b\w+\b', rhs)
         used_vars.update(tokens)
 
     optimized = []
     for line in lines:
-        lhs = line.split(":=")[0].strip()
+        lhs = line.split(" = ")[0].strip()
         # Keep the line if the variable is used or not an assignment
-        if lhs in used_vars or re.match(r"[a-zA-Z]+\s*:=\s*[^=]+", line) is None:
+        if lhs in used_vars or re.match(r"[a-zA-Z]+\s*=\s*[^=]+", line) is None:
             optimized.append(line)
     return optimized
 
@@ -34,11 +34,11 @@ def common_subexpression_elimination(lines):
     optimized = []
 
     for line in lines:
-        match = re.match(r"(\w+)\s*:=\s*(.*)", line)
+        match = re.match(r"(\w+)\s*=\s*(.*)", line)
         if match:
             var, expr = match.groups()
             if expr in expr_map:
-                optimized.append(f"{var} := {expr_map[expr]}")
+                optimized.append(f"{var} = {expr_map[expr]}")
             else:
                 expr_map[expr] = var
                 optimized.append(line)

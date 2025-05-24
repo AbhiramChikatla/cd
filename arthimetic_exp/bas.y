@@ -5,12 +5,10 @@ void yyerror(const char *s);
 int yylex();
 %}
 
-/* Declare token types */
 %token NUMBER END
-/* Define operator precedence and associativity */
 %left '+' '-'
 %left '*' '/'
-%right UMINUS /* Unary minus (negative numbers) */
+%right UMINUS 
 %%
 input:
  expr END { printf("Valid arithmetic expression\n"); return 0; }
@@ -20,7 +18,7 @@ expr:
  | expr '-' expr
  | expr '*' expr
  | expr '/' expr
- | '-' expr %prec UMINUS /* Handle negative numbers */
+ | '-' expr %prec UMINUS 
  | '(' expr ')'
  | NUMBER
  ;

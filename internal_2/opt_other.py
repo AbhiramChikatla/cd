@@ -82,7 +82,7 @@ def peephole(code):
 
 print(
     peephole("mov r1, r1\nadd r2, r3\nload r2, r2\njump a, a")
-)  # removes redundant mov
+)  
 
 
 def register_allocation(variables):
@@ -128,7 +128,6 @@ scheduled = instruction_scheduling(instructions)
 print("\n".join(scheduled))
 
 
-# moves load first
 def tail_rec_fact(n, acc=1):
     if n == 0:
         return acc

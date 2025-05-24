@@ -4,7 +4,7 @@ def count_file_contents(file_path):
     print(content)
     num_chars = len(content)
     num_words = len(content.split())
-    num_lines = content.count('\n') + 1 if content else 0
+    num_lines = content.count('\n')
     num_spaces = content.count(' ')
     num_tabs = content.count('\t')
 

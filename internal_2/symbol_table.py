@@ -58,20 +58,16 @@ class SymbolTable:
             )
 
     def parse_value(self, dtype, val):
-        val = val.strip()
-        return (
-            int(val)
-            if dtype == "int"
-            else (
-                float(val)
-                if dtype in ["float", "double"]
-                else (
-                    val.strip("'")
-                    if dtype == "char"
-                    else val.lower() == "true" if dtype == "bool" else val
-                )
-            )
-        )
+        if dtype == "int":
+            return int(val)
+        elif dtype in ["float", "double"]:
+            return float(val)
+        elif dtype == "char":
+            return val.strip("'")
+        elif dtype == "bool":
+            return val.lower() == "true"
+        else:
+            return val
 
 
 if __name__ == "__main__":

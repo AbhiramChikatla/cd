@@ -3,8 +3,8 @@
 #include <stdio.h>
 %}
 
-Oct  o[0-7]+
-Hex  o[xX][0-9A-Fa-f]+
+Oct  0[0-7]+
+Hex  0[xX][0-9A-Fa-f]+
 
 %%
 {Hex} { 
@@ -30,6 +30,6 @@ int yywrap() {
     return 1;
 }
 
-// flex capitalize.l
+// flex oct_hex.l
 // gcc  lex.yy.c -o cap.out -ll
 // ./cap.out 

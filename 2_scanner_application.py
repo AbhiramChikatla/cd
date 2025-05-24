@@ -36,7 +36,7 @@ def scanner(file_path):
             print(f"{'Token':<15} {'Type':<15}")
             print("-" * 30)
 
-            for line_num, line in enumerate(lines, start=1):
+            for line in lines:
                 tokens = tokenize_line(line)
                 for token in tokens:
                     token_type = classify_token(token)

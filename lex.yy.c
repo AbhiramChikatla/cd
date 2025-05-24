@@ -357,13 +357,12 @@ static char *yy_last_accepting_cpos;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 ".\\adding_line_numbers copy.l"
+#line 1 ".\\adding_line_numbers.l"
 #define INITIAL 0
-#line 2 ".\\adding_line_numbers copy.l"
+#line 2 ".\\adding_line_numbers.l"
 #include <stdio.h>
-FILE *fp;
-int line_number=1;
-#line 367 "lex.yy.c"
+int line_number = 1;
+#line 366 "lex.yy.c"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -517,9 +516,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 7 ".\\adding_line_numbers copy.l"
+#line 6 ".\\adding_line_numbers.l"
 
-#line 523 "lex.yy.c"
+#line 522 "lex.yy.c"
 
 	if ( yy_init )
 		{
@@ -605,25 +604,24 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 8 ".\\adding_line_numbers copy.l"
-{
-printf("%d %s\n",line_number++,yytext);
-
+#line 7 ".\\adding_line_numbers.l"
+{ 
+    printf("%d %s\n", line_number++, yytext); 
 }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 12 ".\\adding_line_numbers copy.l"
-{
-    printf("%s",yytext);
+#line 11 ".\\adding_line_numbers.l"
+{ 
+    printf("%s", yytext); 
 }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 15 ".\\adding_line_numbers copy.l"
+#line 14 ".\\adding_line_numbers.l"
 ECHO;
 	YY_BREAK
-#line 627 "lex.yy.c"
+#line 625 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1511,23 +1509,27 @@ int main()
 	return 0;
 	}
 #endif
-#line 15 ".\\adding_line_numbers copy.l"
+#line 14 ".\\adding_line_numbers.l"
 
-int main(int argc,char *argv[]){
-    if(argc!=2){
-        fprintf(stderr,"Usage: %s <input_filename>\n",argv[0]);
+
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        fprintf(stderr, "Usage: %s <input_file>\n", argv[0]);
         return 1;
     }
-    fp=fopen(argv[1],"r");
-    if(!fp){
-        perror("error in opening the file");
+    
+    FILE *fp = fopen(argv[1], "r");
+    if (!fp) {
+        perror("Error opening file");
         return 1;
     }
-    yyin=fp;
+    
+    yyin = fp;
     yylex();
     fclose(fp);
     return 0;
 }
-int yywrap(){
+
+int yywrap() {
     return 1;
 }

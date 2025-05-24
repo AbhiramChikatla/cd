@@ -1,5 +1,5 @@
-first=10
-second=20
-
-third=first+second
-print("The third number is :",third)
+int main() {
+    int a = 10;
+    float b = 20.5;
+    return 0;
+}

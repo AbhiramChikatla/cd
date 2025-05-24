@@ -13,9 +13,8 @@
      return 0; }
 %%
 int yywrap() { 
-    return 1;
-    
-     }
+    return 1;    
+}
 
 // bison -d bas.y
 // flex bas.l

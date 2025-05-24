@@ -1,7 +1,6 @@
 %{
 #include <stdio.h>
 int line_number = 1;
-FILE *fp;
 %}
 
 %%
@@ -20,7 +19,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
     
-    fp = fopen(argv[1], "r");
+    FILE *fp = fopen(argv[1], "r");
     if (!fp) {
         perror("Error opening file");
         return 1;
